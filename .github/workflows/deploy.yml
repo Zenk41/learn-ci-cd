@@ -8,7 +8,7 @@ jobs:
       - name: pull-test-deploy
         uses: appleboy/ssh-action@master
         with:
-          proxy_timeout: 160
+          proxy_timeout: 60
           host: ${{secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
