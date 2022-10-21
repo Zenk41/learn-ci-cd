@@ -1,19 +1,15 @@
-FROM golang:alpine
+FROM golang:1.17
 
-# set up working directory
+RUN mkdir /app
+
 WORKDIR /app
 
-# Copying all file and folder to working directory
-COPY . .
-
-# downloading package 
+COPY go.mod /app
+COPY go.sum /app
 RUN go mod download
 
-# build the app
-RUN go build -o learn-ci-cd
+ADD . /app
 
-# exposing port
-EXPOSE 8080
+RUN go build -o main .
 
-# Set up ENTRYPOINT 
-ENTRYPOINT ["./learn-ci-cd"]
+CMD ["/app/main"]
