@@ -13,11 +13,12 @@ import (
 	"syscall"
 	"time"
 
-	echo "github.com/labstack/echo/v4"
 	_middleware "learn-ci-cd/app/middlewares"
 	_routes "learn-ci-cd/app/routes"
 	_dbDriver "learn-ci-cd/drivers/mysql"
 	"learn-ci-cd/util"
+
+	echo "github.com/labstack/echo/v4"
 )
 
 // clean up function on shutting down
@@ -59,7 +60,7 @@ func main() {
 	routesInit.RouteRegister(e)
 
 	go func() {
-		if err := e.Start(":8000"); err != nil && err != http.ErrServerClosed {
+		if err := e.Start(":8080"); err != nil && err != http.ErrServerClosed {
 			e.Logger.Fatal("shutting down the server")
 		}
 	}()
